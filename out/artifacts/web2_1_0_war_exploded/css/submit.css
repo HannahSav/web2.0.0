@@ -1,0 +1,8 @@
+#submit {font-size: 12pt;
+    color:DeepPink;
+    text-decoration: none;
+    border-radius: 2px;
+    background: rgb(255,200,200);
+    box-shadow: 0 -3px rgb(200,50,255) inset;
+    transition: 0.2s;
+}
