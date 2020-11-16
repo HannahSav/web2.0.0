@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../archive" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605267820044</updated>
-      <workItem from="1605267824577" duration="28216000" />
+      <workItem from="1605267824577" duration="47438000" />
     </task>
     <servers />
   </component>

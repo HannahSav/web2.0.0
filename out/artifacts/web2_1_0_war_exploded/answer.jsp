@@ -56,6 +56,13 @@
         <text x="165" y="210"> -R/2</text>
         <text x="165" y="260"> -R</text>
 
+          <%--
+              System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
+              String point = (String) request.getServletContext().getAttribute("point");
+              if (point != null ) {
+                  out.println(point);
+              } else out.println("<p>There are no points yet!</p>");
+          --%>
       </svg>
     </td>
     <td>
@@ -69,17 +76,20 @@
             <th> Текущее время </th>
             <th> Время работы </th>
           </tr>
-          <%
-            ArrayList<String> rows = (ArrayList<String>) request.getServletContext().getAttribute("rows");
-            if (rows != null )
-              for(String row: rows)
-                out.println(row);
-          %>
+            <%
+                String row = (String) request.getServletContext().getAttribute("row");
+                if (row != null ) {
+                    out.println(row);
+                } else out.println("<p>There are no points yet!</p>");
+            %>
         </table>
+          <div>
+              <button type="button" id="back_but" onclick="location.href='/web2.1.0_war/'"><span class="back_but_text">Назад</span></button>
+          </div>
       </div>
     </td>
   </tr>
 </table>
 </body>
-<script src ="script.js"></script>
+<%--script src ="script.js"></script--%>
 </html>

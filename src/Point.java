@@ -49,7 +49,7 @@ public class Point {
                 "<td>" + x + "</td>" +
                 "<td>" + y + "</td>" +
                 "<td>" + r + "</td>" +
-                "<td>" + isInArea + "</td>" +
+                "<td>" + isInArea() + "</td>" +
                 "<td>" + dateTime + "</td>" +
                 "<td>" + runtime + "ms" + "</td>" +
                 "</tr>";
