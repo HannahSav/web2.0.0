@@ -13,7 +13,7 @@
 	charset=utf-8">
   <link rel="stylesheet" href = "css/head.css">
   <title> кто прочитал, тот котик </title>
-  <p class="head"> Салмова Анна, Савон Ганна, группа Р3231, вариант 2721 </p>
+  <p class="head"> Салмова Анна, Савон Ганна, группа Р3231, вариант 2738 </p>
 </head>
 <body>
 <link rel="stylesheet" href = "css/style.css">
@@ -29,7 +29,7 @@
               <tr>
                 <td>
                   <p class="infotext">X
-                    <input type="text" id = "xId"  name="koordx" size="15" maxlength="30" placeholder="от -3 до 3"/>
+                    <input type="text" id = "xId" class="x_in" name="koordx" size="15" maxlength="30" placeholder="от -3 до 3"/>
                   </p>
                   <p id = "xText"></p>
                   <br>
@@ -38,7 +38,7 @@
               <tr>
                 <td>
                   <p class="infotext">Y
-                    <input type="text" id = "yId"  name="koordy" size="15" maxlength="30" placeholder="от -3 до 3"/>
+                    <input type="text" id = "yId" class="y_in" name="koordy" size="15" maxlength="30" placeholder="от -3 до 3"/>
                   </p>
                   <p id = "yText"></p>
                   <br>
@@ -48,7 +48,7 @@
                 <td width="500">
                   <p class = "infotext"> Введите радиус глубины познания
                     <br />
-                  <table>
+                  <table onclick="forR()">
                     <tr>
                       <td><input type="radio" id = "rId1" name="radius" value="1" />1</td>
                       <td><input type="radio" id = "rId2" name="radius" value="2" />2</td>
@@ -63,7 +63,7 @@
                 </td>
               </tr>
               <tr><td>
-                <input type = "button" id="submit" value="За Родину!!!" onclick="createRequest()" >
+                <input type = "button" id="submit" class = "button" value="За Родину!!!" onclick="createRequest()" >
               </td>
               </tr>
             </div>
@@ -72,7 +72,7 @@
       </table>
     </td>
     <td width="200" rowspan="0">
-      <svg width="310" height="310">
+      <svg width="310" height="310" class="graph">
         <rect id="rect" height="310" width="310" fill="#FFF0F0" opacity="0.9"></rect>
         <line stroke="#000000" x1="5" x2="305" y1="155" y2="155"></line>
         <line stroke="#000000" x1="155" x2="155" y1="5" y2="305"></line>
@@ -107,6 +107,15 @@
         <text x="165" y="210"> -R/2</text>
         <text x="165" y="260"> -R</text>
 
+        <circle r="3" cx="155" cy="155" id="point" fill="black" ></circle>
+
+        <%
+          System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
+          ArrayList<String> points = (ArrayList<String>) request.getServletContext().getAttribute("points");
+          if (points != null )
+            for(String point: points)
+              out.println(point);
+        %>
       </svg>
     </td>
     <td>
@@ -133,4 +142,5 @@
 </table>
 </body>
 <script src ="script.js"></script>
+<script src="map.js"></script>
 </html>

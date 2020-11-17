@@ -39,9 +39,9 @@ public class Point {
     }
 
     public String getPoint() {
-        double xMap = x * 120 / r + 200;
-        double yMap = y * -120 / r + 200;
-        return "<circle r=\"5\" cx="+ xMap +" cy="+ yMap +" opacity=\"0.7\" fill=\"yellow\" ></circle>";
+        double xMap = x * 100 / r + 155;
+        double yMap = y * -100 / r + 155;
+        return "<circle r=\"3\" cx="+ xMap +" cy="+ yMap +" opacity=\"0.7\" fill=\"red\" ></circle>";
     }
 
     public String getTableRow() {
@@ -56,8 +56,9 @@ public class Point {
     }
 
     public boolean setInArea(double x, double y, double r) {
-        if (x <= 0 && y >= 0 && y <= 2*x + r) return true;
-        if (x >= 0 && y >= 0 && x*x + y*y <= r*r) return true;
-        return x <= 0 && y <= 0 && x >= -r/2 && y >= -r;
+        if (x <= 0 && y >= 0 && y <= r && x <= r) return true;
+        if (x >= 0 && y >= 0 && 2*(x + y) <= r) return true;
+        if (x <= 0 && y <= 0 && 4*(x*x+y*y) <= r*r) return true;
+        return false;
     }
 }

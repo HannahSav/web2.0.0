@@ -29,11 +29,12 @@ function checkY(y){
 function checkR(){
     var inp = document.getElementsByName('radius');
     for (var i = 0; i < inp.length; i++) {
-        if (inp[i].type == "radio" && inp[i].checked) {
-            rFlag = true;
+        if (inp[i].type === "radio" && inp[i].checked) {
             r = rValues[i];
+            return  true;
         }
     }
+    return false;
 }
 
 function createRequest(){
@@ -41,10 +42,9 @@ function createRequest(){
     x = getX();
     xFlag=false;
     yFlag=false;
-    rFlag=false;
+    rFlag=checkR();
     checkX(x);
     checkY(y);
-    checkR();
     if(!xFlag)document.getElementById('xText').innerHTML = "выберите X от -3 до 3";
     else document.getElementById('xText').innerHTML = "";
     if(!yFlag)document.getElementById('yText').innerHTML = "выберите Y от -3 до 3";
@@ -52,11 +52,11 @@ function createRequest(){
     if(!rFlag)document.getElementById('rText').innerHTML = "выберите R";
     else document.getElementById('rText').innerHTML = "";
     if(xFlag && yFlag && rFlag) {
-        document.getElementById('yText').innerHTML = "сделано, мой генерал, обновите страницу";
         $.post(
             "controller",
             {x: x, y: y, r: r},
             function (response) {
+                window.close();
                 window.open("answer.jsp");
             }
         );

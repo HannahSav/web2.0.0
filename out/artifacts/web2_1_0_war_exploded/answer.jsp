@@ -13,7 +13,7 @@
 	charset=utf-8">
   <link rel="stylesheet" href = "css/head.css">
   <title> кто прочитал, тот котик </title>
-  <p class="head"> 2 дуры, группа Р3231, вариант 2721 </p>
+  <p class="head">  Салмова Анна, Савон Ганна, группа Р3231, вариант 2738 </p>
 </head>
 <body>
 <link rel="stylesheet" href = "css/style.css">
@@ -56,13 +56,13 @@
         <text x="165" y="210"> -R/2</text>
         <text x="165" y="260"> -R</text>
 
-          <%--
+          <%
               System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
               String point = (String) request.getServletContext().getAttribute("point");
               if (point != null ) {
                   out.println(point);
-              } else out.println("<p>There are no points yet!</p>");
-          --%>
+              }
+          %>
       </svg>
     </td>
     <td>
@@ -84,12 +84,13 @@
             %>
         </table>
           <div>
-              <button type="button" id="back_but" onclick="location.href='/web2.1.0_war/'"><span class="back_but_text">Назад</span></button>
+              <button type="button" class="button" id="back_but" onclick="location.href='/web2.1.0_war/'"><span class="back_but_text">Назад</span></button>
           </div>
       </div>
     </td>
   </tr>
 </table>
 </body>
-<%--script src ="script.js"></script--%>
+<script src ="script.js"></script>
+<script src ="map.js"></script>
 </html>
