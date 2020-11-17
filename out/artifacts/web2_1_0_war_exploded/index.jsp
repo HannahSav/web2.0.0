@@ -24,7 +24,7 @@
       <table>
         <tr><td width="250" class="infotext">Введите координаты своего города, чтобы проверить является ли он свалкой Москвы.</td></tr>
         <td>
-          <form id = "dataForm">
+          <form id = "dataForm" method="post" action="controller">
             <div class="container">
               <tr>
                 <td>
@@ -48,7 +48,7 @@
                 <td width="500">
                   <p class = "infotext"> Введите радиус глубины познания
                     <br />
-                  <table onclick="forR()">
+                  <table >
                     <tr>
                       <td><input type="radio" id = "rId1" name="radius" value="1" />1</td>
                       <td><input type="radio" id = "rId2" name="radius" value="2" />2</td>
@@ -63,7 +63,7 @@
                 </td>
               </tr>
               <tr><td>
-                <input type = "button" id="submit" class = "button" value="За Родину!!!" onclick="createRequest()" >
+                <input type = "submit" id="submit" class = "button" value="За Родину!!!" >
               </td>
               </tr>
             </div>
@@ -111,7 +111,7 @@
 
         <%
           System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
-          ArrayList<String> points = (ArrayList<String>) request.getServletContext().getAttribute("points");
+          ArrayList<String> points = (ArrayList<String>) request.getSession().getAttribute("points");
           if (points != null )
             for(String point: points)
               out.println(point);
@@ -130,7 +130,7 @@
             <th> Время работы </th>
           </tr>
           <%
-            ArrayList<String> rows = (ArrayList<String>) request.getServletContext().getAttribute("rows");
+            ArrayList<String> rows = (ArrayList<String>) request.getSession().getAttribute("rows");
             if (rows != null )
               for(String row: rows)
                 out.println(row);
@@ -141,6 +141,6 @@
   </tr>
 </table>
 </body>
-<script src ="script.js"></script>
+<%--script src ="script.js"></script--%>
 <script src="map.js"></script>
 </html>

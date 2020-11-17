@@ -58,7 +58,7 @@
 
           <%
               System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
-              String point = (String) request.getServletContext().getAttribute("point");
+              String point = (String) request.getSession().getAttribute("point");
               if (point != null ) {
                   out.println(point);
               }
@@ -77,7 +77,7 @@
             <th> Время работы </th>
           </tr>
             <%
-                String row = (String) request.getServletContext().getAttribute("row");
+                String row = (String) request.getSession().getAttribute("row");
                 if (row != null ) {
                     out.println(row);
                 } else out.println("<p>There are no points yet!</p>");

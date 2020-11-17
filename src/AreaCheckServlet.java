@@ -9,8 +9,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class AreaCheckServlet extends HttpServlet {
-    ArrayList<String> points = new ArrayList<>();
-    ArrayList<String> rows = new ArrayList<>();
+    //ArrayList<String> points = new ArrayList<>();
+   // ArrayList<String> rows = new ArrayList<>();
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -24,7 +24,7 @@ public class AreaCheckServlet extends HttpServlet {
             boolean flagX = false, flagY = false, flagR = false;
             double x = 0, y = 0, r = 0;
             try {
-                x = Double.parseDouble(request.getParameter("x").replace(',', '.').trim());
+                x = Double.parseDouble(request.getParameter("koordx").replace(',', '.').trim());
                 if (x < -3 || x > 3) {
                     out.println("X не входит в диапазон</br>");
                 } else
@@ -34,7 +34,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             try {
-                y = Double.parseDouble(request.getParameter("y").replace(',', '.').trim());
+                y = Double.parseDouble(request.getParameter("koordy").replace(',', '.').trim());
                 if (y < -3 || y > 3) {
                     out.println("Y не входит в диапазон</br>");
                 } else
@@ -44,7 +44,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             try {
-                r = Double.parseDouble(request.getParameter("r").replace(',', '.').trim());
+                r = Double.parseDouble(request.getParameter("radius").replace(',', '.').trim());
                 if (r < 1 || r > 5) {
                     out.println("выберите R</br>");
                 } else
@@ -56,15 +56,19 @@ public class AreaCheckServlet extends HttpServlet {
             long endTime = System.nanoTime();
             long runtime = (endTime - startTime)/100;
             out.println("все хорошо, ну почти");
+            ArrayList<String> rows = (ArrayList<String>) request.getSession().getAttribute("rows");
+            if (rows==null) rows = new ArrayList<>();
+            ArrayList<String> points = (ArrayList<String>) request.getSession().getAttribute("points");
+            if (points==null) points = new ArrayList<>();
             if (flagX && flagY && flagR) {
                 System.out.println("все хорошо, доставай кусок таблички");
                 Point point = new Point(x, y, r, runtime);
                 points.add(point.getPoint());
                 rows.add(point.getTableRow());
-                request.getServletContext().setAttribute("point", point.getPoint());
-                request.getServletContext().setAttribute("row", point.getTableRow());
-                request.getServletContext().setAttribute("points", points);
-                request.getServletContext().setAttribute("rows", rows);
+                request.getSession().setAttribute("point", point.getPoint());
+                request.getSession().setAttribute("row", point.getTableRow());
+                request.getSession().setAttribute("points", points);
+                request.getSession().setAttribute("rows", rows);
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/answer.jsp");
                 dispatcher.forward(request, response);
                 //request.getServletContext().getRequestDispatcher("/answer.jsp").forward(request, response);
