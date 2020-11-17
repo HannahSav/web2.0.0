@@ -53,18 +53,19 @@ function createRequest(){
     else document.getElementById('rText').innerHTML = "";
     if(xFlag && yFlag && rFlag) {
         document.getElementById('yText').innerHTML = "сделано, мой генерал, обновите страницу";
-        //$.post("answer.jsp", su);
         $.post(
             "controller",
-            {x: x, y: y, r: r}
+            {x: x, y: y, r: r},
+            function (response) {
+                window.open("answer.jsp");
+            }
         );
-
     }
 
 }
-   // } else {
-   //     event.preventDefault()
-   // }
+// } else {
+//     event.preventDefault()
+// }
 
 
 /*$(function () {

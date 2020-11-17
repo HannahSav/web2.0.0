@@ -24,7 +24,7 @@
       <table>
         <tr><td width="250" class="infotext">Введите координаты своего города, чтобы проверить является ли он свалкой Москвы.</td></tr>
         <td>
-          <form id = "dataForm" action="controller" method="post">
+          <form id = "dataForm">
             <div class="container">
               <tr>
                 <td>
@@ -63,7 +63,7 @@
                 </td>
               </tr>
               <tr><td>
-                <input type = "submit" id="submit" value="За Родину!!!" >
+                <input type = "button" id="submit" value="За Родину!!!" onclick="createRequest()" >
               </td>
               </tr>
             </div>
@@ -107,13 +107,6 @@
         <text x="165" y="210"> -R/2</text>
         <text x="165" y="260"> -R</text>
 
-          <%
-              System.out.println("Enter parameter:\nX:"+request.getParameter("x")+"\nY:"+request.getParameter("y")+"\nR:"+request.getParameter("r"));
-              String point = (String) request.getServletContext().getAttribute("point");
-              if (point != null ) {
-                  out.println(point);
-              } else out.println("<p>There are no points yet!</p>");
-          %>
       </svg>
     </td>
     <td>
@@ -139,5 +132,5 @@
   </tr>
 </table>
 </body>
-<%--script src ="script.js"></script--%>
+<script src ="script.js"></script>
 </html>

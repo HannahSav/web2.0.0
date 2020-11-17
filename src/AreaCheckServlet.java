@@ -13,18 +13,18 @@ public class AreaCheckServlet extends HttpServlet {
     ArrayList<String> rows = new ArrayList<>();
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("/controller");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("I am in Checker");
         try (PrintWriter out = response.getWriter()) {
             long startTime = System.nanoTime();
-            boolean flagX = true, flagY = true, flagR = true;
+            boolean flagX = false, flagY = false, flagR = false;
             double x = 0, y = 0, r = 0;
             try {
-                x = Double.parseDouble(request.getParameter("koordx").replace(',', '.').trim());
+                x = Double.parseDouble(request.getParameter("x").replace(',', '.').trim());
                 if (x < -3 || x > 3) {
                     out.println("X не входит в диапазон</br>");
                 } else
@@ -34,7 +34,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             try {
-                y = Double.parseDouble(request.getParameter("koordy").replace(',', '.').trim());
+                y = Double.parseDouble(request.getParameter("y").replace(',', '.').trim());
                 if (y < -3 || y > 3) {
                     out.println("Y не входит в диапазон</br>");
                 } else
@@ -44,9 +44,9 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             try {
-                r = Double.parseDouble(request.getParameter("radius").replace(',', '.').trim());
+                r = Double.parseDouble(request.getParameter("r").replace(',', '.').trim());
                 if (r < 1 || r > 5) {
-                    out.println("R не входит в диапазон</br>");
+                    out.println("выберите R</br>");
                 } else
                     flagR = true;
             } catch (NumberFormatException e) {
@@ -73,7 +73,9 @@ public class AreaCheckServlet extends HttpServlet {
                 //response.setContentType("/answer.jsp");
                 //System.out.println(rows);
             } else
-                out.println("<p>Incorrect input</p>");
+                request.setAttribute("txt","<p>Incorrect input</p>" );
+            doGet(request, response);
+            //out.println("<p>Incorrect input</p>");
         }
     }
 }

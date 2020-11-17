@@ -10,9 +10,9 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String x = request.getParameter("koordx");
-        String r = request.getParameter("radius");
-        String y = request.getParameter("koordy");
+        String x = request.getParameter("x");
+        String r = request.getParameter("r");
+        String y = request.getParameter("y");
         System.out.println("Enter parameter:\nX:" + x + "\nY:" + y + "\nR:" + r);
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
